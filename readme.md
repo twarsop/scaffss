@@ -1,0 +1,35 @@
+# SCAFFSS
+
+## Super Cool Awesome Framework For Static Sites
+
+The purpose of this project is to create a lightweight framework that can be used to generate static sites.
+
+### Some History
+
+I've recently created a personal website [repo here](https://github.com/twarsop/personal-website), [site here](http://tomwarsop.com/) that is a static site. However, there is a lot of repeated code within the HTML, e.g. the footer on each page, and all this repeated code feels bad.
+
+I've used componentised frameworks before such as Angular. But for creating simple static sites such as my personal webiste this feels like a very heavy handed approach.
+
+Hence, the creation of this project.
+
+## Project Aim
+
+Ideally I would like the output of this project to work in the following way:
+
+```
+templates --|
+            |--> framework --> output static site pages
+data -------|
+```
+
+There are a couple of requirements about how the project is approached too:
+- Written in python
+- Going to use the (jinja2)[https://pypi.org/project/Jinja2/] templating library as a base.
+
+## To Do
+
+For others that want to get involved (and as a reference for myself), here is a list of things that currently need doing:
+- Determine project folder structure
+- Copy the current version of [my personal site](https://github.com/twarsop/personal-website) into this repo/structure defined above
+- Re-write my personal site using the templating functionaliy in jinja2
+- Refactor data out of the templating scripts (yes this doesn't provide a lot of details yet as to how we will actually do this)
