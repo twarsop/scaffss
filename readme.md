@@ -24,7 +24,7 @@ data -------|
 
 There are a couple of requirements about how the project is approached too:
 - Written in python
-- Going to use the (jinja2)[https://pypi.org/project/Jinja2/] templating library as a base.
+- Going to use the [jinja2](https://pypi.org/project/Jinja2/) templating library as a base.
 
 ## To Do
 
