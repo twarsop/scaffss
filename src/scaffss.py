@@ -10,9 +10,22 @@ def copy_folder():
     for file in os.listdir(example_personal_website_input_dir):
         copyfile(f"{example_personal_website_input_dir}/{file}", f"{example_personal_website_output_dir}/{file}")
 
+def read_file(file_name):
+    file_contents = None
+    with open(file_name) as file:
+        file_contents = file.read().strip()
+    return file_contents
+
 def jinja2_example():
-    t = Template("Hello {{ something }}!")
-    print(t.render(something="World"))
+    jinja2_example_from_file_dir = "../examples/jinja2-example-from-file/"
+    jinja2_example_from_file_input_dir = f"{jinja2_example_from_file_dir}input/"
+    jinja2_example_from_file_output_dir = f"{jinja2_example_from_file_dir}output/"
+
+    template = read_file(f"{jinja2_example_from_file_input_dir}template.txt")
+    content = read_file(f"{jinja2_example_from_file_input_dir}content.txt")
+
+    with open(f"{jinja2_example_from_file_output_dir}output.txt", "w") as output_file:
+        output_file.write(Template(template).render(something=content));
 
 # copy_folder()
 jinja2_example()
