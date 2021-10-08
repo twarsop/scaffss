@@ -27,5 +27,20 @@ def jinja2_example():
     with open(f"{jinja2_example_from_file_output_dir}output.txt", "w") as output_file:
         output_file.write(Template(template).render(something=content));
 
+def build():
+    example_personal_website_dir = "../examples/personal-website/"
+    example_personal_website_input_static_dir = f"{example_personal_website_dir}input/static/"
+    example_personal_website_input_templates_dir = f"{example_personal_website_dir}input/templates/"
+    example_personal_website_output_dir = f"{example_personal_website_dir}output/"
+
+    for file in os.listdir(example_personal_website_input_static_dir):
+        copyfile(f"{example_personal_website_input_static_dir}{file}", f"{example_personal_website_output_dir}{file}")
+
+    for file in os.listdir(example_personal_website_input_templates_dir):
+        template = read_file(f'{example_personal_website_input_templates_dir}/{file}')
+        with open(f'{example_personal_website_output_dir}{file}', 'w') as output_file:
+            output_file.write(Template(template).render())
+
 # copy_folder()
-jinja2_example()
+# jinja2_example()
+build()
