@@ -32,5 +32,5 @@ For others that want to get involved (and as a reference for myself), here is a 
 - ~~Create a very simple python script that copies the contents of one folder and outputs it to another folder (this is a fundamental action this project is going to do and is the smallest first building block I can think of). For example files to copy from source to target directories might as well use the current version of [my personal site](https://github.com/twarsop/personal-website).~~
 - ~~Create a simple inline templating example using jinja2 - to start to learn how it works.~~
 - ~~Update the simple inline templating example to use input files for both the template and the content.~~
-- Using the knowledge acquired above, get a templating solution that refactors the footer from my personal site into a single file which is then injected into all of the site pages.
+- ~~Using the knowledge acquired above, get a templating solution that refactors the footer from my personal site into a single file which is then injected into all of the site pages.~~
 - Similarly, refactor the header from the personal site into a single file which is then injected into all of the site pages.
