@@ -29,9 +29,14 @@ def jinja2_example():
 
 def build():
     example_personal_website_dir = "../examples/personal-website/"
+    example_personal_website_input_content_dir = f"{example_personal_website_dir}input/content/"
     example_personal_website_input_static_dir = f"{example_personal_website_dir}input/static/"
     example_personal_website_input_templates_dir = f"{example_personal_website_dir}input/templates/"
     example_personal_website_output_dir = f"{example_personal_website_dir}output/"
+
+    content = dict()
+    for file in os.listdir(example_personal_website_input_content_dir):
+        content[file.split('.')[0]] = read_file(f'{example_personal_website_input_content_dir}/{file}')
 
     for file in os.listdir(example_personal_website_input_static_dir):
         copyfile(f"{example_personal_website_input_static_dir}{file}", f"{example_personal_website_output_dir}{file}")
@@ -39,7 +44,7 @@ def build():
     for file in os.listdir(example_personal_website_input_templates_dir):
         template = read_file(f'{example_personal_website_input_templates_dir}/{file}')
         with open(f'{example_personal_website_output_dir}{file}', 'w') as output_file:
-            output_file.write(Template(template).render())
+            output_file.write(Template(template).render(footer=content['footer']))
 
 # copy_folder()
 # jinja2_example()
