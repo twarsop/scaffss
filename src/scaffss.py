@@ -29,21 +29,21 @@ def jinja2_example():
 
 def build():
     example_personal_website_dir = "../examples/personal-website/"
-    example_personal_website_input_content_dir = f"{example_personal_website_dir}input/content/"
-    example_personal_website_input_static_dir = f"{example_personal_website_dir}input/static/"
-    example_personal_website_input_templates_dir = f"{example_personal_website_dir}input/templates/"
-    example_personal_website_output_dir = f"{example_personal_website_dir}output/"
+    content_dir = f"{example_personal_website_dir}input/content/"
+    static_dir = f"{example_personal_website_dir}input/static/"
+    templates_dir = f"{example_personal_website_dir}input/templates/"
+    output_dir = f"{example_personal_website_dir}output/"
 
     content = dict()
-    for file in os.listdir(example_personal_website_input_content_dir):
-        content[file.split('.')[0]] = read_file(f'{example_personal_website_input_content_dir}/{file}')
+    for file in os.listdir(content_dir):
+        content[file.split('.')[0]] = read_file(f'{content_dir}/{file}')
 
-    for file in os.listdir(example_personal_website_input_static_dir):
-        copyfile(f"{example_personal_website_input_static_dir}{file}", f"{example_personal_website_output_dir}{file}")
+    for file in os.listdir(static_dir):
+        copyfile(f"{static_dir}{file}", f"{output_dir}{file}")
 
-    for file in os.listdir(example_personal_website_input_templates_dir):
-        template = read_file(f'{example_personal_website_input_templates_dir}/{file}')
-        with open(f'{example_personal_website_output_dir}{file}', 'w') as output_file:
+    for file in os.listdir(templates_dir):
+        template = read_file(f'{templates_dir}/{file}')
+        with open(f'{output_dir}{file}', 'w') as output_file:
             output_file.write(Template(template).render(footer=content['footer']))
 
 # copy_folder()
