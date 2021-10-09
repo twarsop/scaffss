@@ -33,4 +33,9 @@ For others that want to get involved (and as a reference for myself), here is a 
 - ~~Create a simple inline templating example using jinja2 - to start to learn how it works.~~
 - ~~Update the simple inline templating example to use input files for both the template and the content.~~
 - ~~Using the knowledge acquired above, get a templating solution that refactors the footer from my personal site into a single file which is then injected into all of the site pages.~~
-- Similarly, refactor the header from the personal site into a single file which is then injected into all of the site pages.
+- ~~Similarly, refactor the header from the personal site into a single file which is then injected into all of the site pages.~~
+- The build method currently has the content injected into the templates hardcoded, this needs to be changed so that it doesn't have to be updated everytime the templates/content changes. Example of hardcoded content:
+```
+output_file.write(Template(template).render(footer=content['footer'], header=content['header']))
+```
+- Currently scaffss assumes a single flat directory for the `static` folder, this may of course not be true. So `build` needs to be updated to recursively copy the `static` files. (Note: this also means that currently the example personal website isn't actually complete because the previous versions directory has not been included).
