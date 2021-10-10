@@ -38,4 +38,4 @@ For others that want to get involved (and as a reference for myself), here is a 
 ```
 output_file.write(Template(template).render(footer=content['footer'], header=content['header']))
 ```
-- Currently scaffss assumes a single flat directory for the `static` folder, this may of course not be true. So `build` needs to be updated to recursively copy the `static` files. (Note: this also means that currently the example personal website isn't actually complete because the previous versions directory has not been included).
+- ~~Currently scaffss assumes a single flat directory for the `static` folder, this may of course not be true. So `build` needs to be updated to recursively copy the `static` files. (Note: this also means that currently the example personal website isn't actually complete because the previous versions directory has not been included).~~
