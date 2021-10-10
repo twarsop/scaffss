@@ -44,7 +44,7 @@ def build():
     for file in os.listdir(templates_dir):
         template = read_file(f'{templates_dir}/{file}')
         with open(f'{output_dir}{file}', 'w') as output_file:
-            output_file.write(Template(template).render(footer=content['footer'], header=content['header']))
+            output_file.write(Template(template).render(**content))
 
 # copy_folder()
 # jinja2_example()
