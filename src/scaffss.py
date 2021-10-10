@@ -1,5 +1,6 @@
 import os
 from shutil import copyfile
+from distutils.dir_util import copy_tree
 from jinja2 import Template
 
 def copy_folder():
@@ -38,8 +39,7 @@ def build():
     for file in os.listdir(content_dir):
         content[file.split('.')[0]] = read_file(f'{content_dir}/{file}')
 
-    for file in os.listdir(static_dir):
-        copyfile(f"{static_dir}{file}", f"{output_dir}{file}")
+    copy_tree(static_dir, output_dir)
 
     for file in os.listdir(templates_dir):
         template = read_file(f'{templates_dir}/{file}')
