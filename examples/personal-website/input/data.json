@@ -1,0 +1,7 @@
+{
+	"index.html": [ { "title": "Hello" } ],
+	"otherme.html": [ { "title": "Other Me" } ],
+	"previous-versions.html": [ { "title": "Previous Versions" } ],
+	"projects.html": [ { "title": "Projects" } ],
+	"versioning.html": [ { "title": "Versioning" } ]
+}
