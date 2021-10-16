@@ -2,6 +2,7 @@ import os
 from shutil import copyfile
 from distutils.dir_util import copy_tree
 from jinja2 import Template
+import json
 
 def copy_folder():
     example_personal_website_dir = "../examples/personal-website/"
@@ -35,6 +36,10 @@ def build():
     templates_dir = f"{example_personal_website_dir}input/templates/"
     output_dir = f"{example_personal_website_dir}output/"
 
+    data = dict()
+    with open(f'{example_personal_website_dir}/input/data.json') as json_file:
+        data = json.load(json_file)
+
     content = dict()
     for file in os.listdir(content_dir):
         content[file.split('.')[0]] = read_file(f'{content_dir}/{file}')
@@ -43,8 +48,19 @@ def build():
 
     for file in os.listdir(templates_dir):
         template = read_file(f'{templates_dir}/{file}')
+
+        file_content = dict()
+
+        if file in data.keys():
+            for key_value in data[file]:
+                for key, value in key_value.items():
+                    file_content[key] = value
+            
+        for key, value in content.items():
+            file_content[key] = value
+
         with open(f'{output_dir}{file}', 'w') as output_file:
-            output_file.write(Template(template).render(**content))
+            output_file.write(Template(template).render(**file_content))
 
 # copy_folder()
 # jinja2_example()
