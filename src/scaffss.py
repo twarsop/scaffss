@@ -37,7 +37,7 @@ def build():
     output_dir = f"{example_personal_website_dir}output/"
 
     data = dict()
-    with open(f'{example_personal_website_dir}/input/data.json') as json_file:
+    with open(f'{example_personal_website_dir}/input/scaffss.json') as json_file:
         data = json.load(json_file)
 
     content = dict()
