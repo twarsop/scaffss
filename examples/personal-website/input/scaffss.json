@@ -1,7 +1,67 @@
 {
-	"index.html": [ { "title": "Hello" } ],
-	"otherme.html": [ { "title": "Other Me" } ],
-	"previous-versions.html": [ { "title": "Previous Versions" } ],
-	"projects.html": [ { "title": "Projects" } ],
-	"versioning.html": [ { "title": "Versioning" } ]
+	"pages": [
+		{
+			"page_file": {
+				"location": "../examples/personal-website/input/templates",
+				"name": "index.html"
+			},
+			"inject_files": [
+				{ "header": "../examples/personal-website/input/content/header.html" },
+				{ "footer": "../examples/personal-website/input/content/footer.html" }
+			],
+			"inject_literals": [ { "title": "Hello" } ]
+		},
+		{
+			"page_file": {
+				"location": "../examples/personal-website/input/templates",
+				"name": "otherme.html"
+			},
+			"inject_files": [
+				{ "header": "../examples/personal-website/input/content/header.html" },
+				{ "footer": "../examples/personal-website/input/content/footer.html" }
+			],
+			"inject_literals": [ { "title": "Other Me" } ]
+		},
+		{
+			"page_file": {
+				"location": "../examples/personal-website/input/templates",
+				"name": "previous-versions.html"
+			},
+			"inject_files": [
+				{ "header": "../examples/personal-website/input/content/header.html" },
+				{ "footer": "../examples/personal-website/input/content/footer.html" }
+			],
+			"inject_literals": [ { "title": "Previous Versions" } ]
+		},
+		{
+			"page_file": {
+				"location": "../examples/personal-website/input/templates",
+				"name": "projects.html"
+			},
+			"inject_files": [
+				{ "header": "../examples/personal-website/input/content/header.html" },
+				{ "footer": "../examples/personal-website/input/content/footer.html" }
+			],
+			"inject_literals": [ { "title": "Projects" } ]
+		},
+		{
+			"page_file": {
+				"location": "../examples/personal-website/input/templates",
+				"name": "versioning.html"
+			},
+			"inject_files": [
+				{ "header": "../examples/personal-website/input/content/header.html" },
+				{ "footer": "../examples/personal-website/input/content/footer.html" }
+			],
+			"inject_literals": [ { "title": "Versioning" } ]
+		}
+	]
+	
+	
+	
+	
+	
+	
+	
+	
 }

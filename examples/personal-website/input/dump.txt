@@ -1,0 +1,15 @@
+// "otherme.html": [ { "title": "Other Me" } ],
+	// "previous-versions.html": [ { "title": "Previous Versions" } ],
+	// "projects.html": [ { "title": "Projects" } ],
+	// "versioning.html": [ { "title": "Versioning" } ]
+
+
+
+
+    "templates/index.html": {
+		"literals": [ { "title": "Hello" } ],
+		"files": [
+			{ "header": "content/header.html" },
+			{ "footer": "content/footer.html" }
+		]
+	}
