@@ -35,15 +35,6 @@ class Scaffss():
     def from_json(cls, data):
         return cls(list(map(Page.from_json, data["pages"])))
 
-
-
-
-def json_decoder(obj):
-    print(obj)
-    return Page(obj['page_file'], obj['inject_files'], obj['inject_files'])
-
-        
-
 def copy_folder():
     example_personal_website_dir = "../examples/personal-website/"
     example_personal_website_input_dir = f"{example_personal_website_dir}input/"
