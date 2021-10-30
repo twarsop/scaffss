@@ -35,14 +35,6 @@ class Scaffss():
     def from_json(cls, data):
         return cls(list(map(Page.from_json, data["pages"])))
 
-def copy_folder():
-    example_personal_website_dir = "../examples/personal-website/"
-    example_personal_website_input_dir = f"{example_personal_website_dir}input/"
-    example_personal_website_output_dir = f"{example_personal_website_dir}output/"
-
-    for file in os.listdir(example_personal_website_input_dir):
-        copyfile(f"{example_personal_website_input_dir}/{file}", f"{example_personal_website_output_dir}/{file}")
-
 def read_file(file_name):
     file_contents = None
     with open(file_name) as file:
@@ -91,6 +83,5 @@ def build():
         with open(os.path.join(f'{output_dir}{page.page_file.name}'), 'w') as output_file:
             output_file.write(Template(page_contents).render(**page_inject_contents))
 
-# copy_folder()
 # jinja2_example()
 build()
