@@ -1,4 +1,5 @@
 {
+	"output_folder": "../examples/personal-website/output",
 	"pages": [
 		{
 			"page_file": {
