@@ -9,9 +9,15 @@
 			},
 			"inject_files": [
 				{ "header": "../examples/personal-website/input/content/header.html" },
-				{ "footer": "../examples/personal-website/input/content/footer.html" }
+				{ "footer": "../examples/personal-website/input/content/footer.html" },
+				{ "nav": "../examples/personal-website/input/content/nav.html" }
 			],
-			"inject_literals": [ { "title": "Hello" } ]
+			"inject_literals": [ 
+				{ "title": "Hello" },
+				{ "nav_hello_class": "selected" },
+				{ "nav_otherme_class": "" },
+				{ "nav_projects_class": "" }
+			]
 		},
 		{
 			"page_file": {
@@ -20,9 +26,15 @@
 			},
 			"inject_files": [
 				{ "header": "../examples/personal-website/input/content/header.html" },
-				{ "footer": "../examples/personal-website/input/content/footer.html" }
+				{ "footer": "../examples/personal-website/input/content/footer.html" },
+				{ "nav": "../examples/personal-website/input/content/nav.html" }
 			],
-			"inject_literals": [ { "title": "Other Me" } ]
+			"inject_literals": [ 
+				{ "title": "Other Me" },
+				{ "nav_hello_class": "" },
+				{ "nav_otherme_class": "selected" },
+				{ "nav_projects_class": "" }
+			]
 		},
 		{
 			"page_file": {
@@ -31,9 +43,15 @@
 			},
 			"inject_files": [
 				{ "header": "../examples/personal-website/input/content/header.html" },
-				{ "footer": "../examples/personal-website/input/content/footer.html" }
+				{ "footer": "../examples/personal-website/input/content/footer.html" },
+				{ "nav": "../examples/personal-website/input/content/nav.html" }
 			],
-			"inject_literals": [ { "title": "Previous Versions" } ]
+			"inject_literals": [ 
+				{ "title": "Previous Versions" },
+				{ "nav_hello_class": "" },
+				{ "nav_otherme_class": "" },
+				{ "nav_projects_class": "" } 
+			]
 		},
 		{
 			"page_file": {
@@ -42,9 +60,15 @@
 			},
 			"inject_files": [
 				{ "header": "../examples/personal-website/input/content/header.html" },
-				{ "footer": "../examples/personal-website/input/content/footer.html" }
+				{ "footer": "../examples/personal-website/input/content/footer.html" },
+				{ "nav": "../examples/personal-website/input/content/nav.html" }
 			],
-			"inject_literals": [ { "title": "Projects" } ]
+			"inject_literals": [ 
+				{ "title": "Projects" },
+				{ "nav_hello_class": "" },
+				{ "nav_otherme_class": "" },
+				{ "nav_projects_class": "selected" }
+			]
 		},
 		{
 			"page_file": {
@@ -53,9 +77,15 @@
 			},
 			"inject_files": [
 				{ "header": "../examples/personal-website/input/content/header.html" },
-				{ "footer": "../examples/personal-website/input/content/footer.html" }
+				{ "footer": "../examples/personal-website/input/content/footer.html" },
+				{ "nav": "../examples/personal-website/input/content/nav.html" }
 			],
-			"inject_literals": [ { "title": "Versioning" } ]
+			"inject_literals": [ 
+				{ "title": "Versioning" },
+				{ "nav_hello_class": "" },
+				{ "nav_otherme_class": "" },
+				{ "nav_projects_class": "" }
+			]
 		}
 	]	
 }

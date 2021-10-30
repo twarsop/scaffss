@@ -26,30 +26,7 @@
     <body>
         {{ header }}
 
-        <nav class="d-none d-md-block">
-            <div class="desktop">
-                <div class="layout">
-                    <li><a href="index.html">hello</a></li>
-                    <li><a href="otherme.html">other me</a></li>
-                    <li><a href="projects.html" class="selected">projects</a></li>
-                </div>
-            </div>
-        </nav>
-
-        <nav class="d-md-none navbar">
-            <div class="container">
-                <div class="row mobile">
-                    <div id="menu" class="menu"><span class="hamburger"></span>menu</div>
-                    <ul id="menu-container" class="navbar-nav menu-container" style="display:none">
-                        <li class="col"><a href="index.html">hello</a></li>
-                        <li class="col"><a href="otherme.html">other me</a></li>
-                        <li class="col"><a href="projects.html" class="selected">projects</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <div class="clear-both"></div>
+        {{ nav }}
 
         <div class="container mt-4 mb-4 layout">
 

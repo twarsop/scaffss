@@ -66,6 +66,13 @@ def build(scaffss_file_location):
                 page_inject_contents[key] = value
 
         with open(os.path.join(scaffss.output_folder, page.page_file.name), 'w') as output_file:
-            output_file.write(Template(page_contents).render(**page_inject_contents))
+            previously_rendered_template = None
+            rendered_template = Template(page_contents).render(**page_inject_contents)
+            
+            while previously_rendered_template != rendered_template:
+                previously_rendered_template = rendered_template
+                rendered_template = Template(rendered_template).render(**page_inject_contents)
+
+            output_file.write(rendered_template)
 
 build('../examples/personal-website/input/scaffss.json')
