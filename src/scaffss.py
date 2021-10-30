@@ -28,13 +28,14 @@ class Page():
         return cls(PageFile.from_json(data["page_file"]), data["inject_files"], data["inject_literals"])
 
 class Scaffss():
-    def __init__(self, output_folder: str, pages: List[Page]):
+    def __init__(self, output_folder: str, static_folder: str, pages: List[Page]):
         self.output_folder = output_folder
+        self.static_folder = static_folder
         self.pages = pages
 
     @classmethod
     def from_json(cls, data):
-        return cls(data["output_folder"], list(map(Page.from_json, data["pages"])))
+        return cls(data["output_folder"], data["static_folder"], list(map(Page.from_json, data["pages"])))
 
 def read_file(file_name):
     file_contents = None
@@ -48,11 +49,8 @@ def build(scaffss_file_location):
         data_str = json_file.read()
 
     scaffss = Scaffss.from_json(json.loads(data_str))
-    
-    example_personal_website_dir = "../examples/personal-website/"
-    static_dir = f"{example_personal_website_dir}input/static/"
 
-    copy_tree(static_dir, scaffss.output_folder)    
+    copy_tree(scaffss.static_folder, scaffss.output_folder)    
 
     for page in scaffss.pages:
         page_contents = read_file(page.page_file.fullpath())

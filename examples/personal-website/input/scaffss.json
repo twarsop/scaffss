@@ -1,5 +1,6 @@
 {
 	"output_folder": "../examples/personal-website/output",
+	"static_folder": "../examples/personal-website/input/static",
 	"pages": [
 		{
 			"page_file": {
