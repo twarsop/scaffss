@@ -43,9 +43,7 @@ def read_file(file_name):
 
 def build(scaffss_file_location):
     example_personal_website_dir = "../examples/personal-website/"
-    content_dir = f"{example_personal_website_dir}input/content/"
     static_dir = f"{example_personal_website_dir}input/static/"
-    templates_dir = f"{example_personal_website_dir}input/templates/"
     output_dir = f"{example_personal_website_dir}output/"
 
     copy_tree(static_dir, output_dir)
