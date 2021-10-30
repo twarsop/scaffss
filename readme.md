@@ -41,5 +41,34 @@ output_file.write(Template(template).render(footer=content['footer'], header=con
 - ~~Currently scaffss assumes a single flat directory for the `static` folder, this may of course not be true. So `build` needs to be updated to recursively copy the `static` files. (Note: this also means that currently the example personal website isn't actually complete because the previous versions directory has not been included).~~
 - ~~Need a way to inject different content into different files, but in the same template placeholder/key. For example, the title of page. My thoughts on this are storing this data in json like: `{ page: [ { key: value, ... } ] }`~~
 - The injection of content should be recursive: there are some parts of the website that need to be refactored as templates themselves so they can have content injected into themselves, as well as needing to be injected into antoher template. For example, the nav could be refactored as content to be injected into the templates. However, the nav itself needs content injecting into it, namely the a `selected`/`non-selected` class so that the correct nav item is selected for the page. I see this wokring by starting at the top level (so the page) and then working down the tree of injection. So it would go page -> nav -> selected nav item.
-- Remove previous test code - I think for the moment we just need what's in the `build` method.
-- Make the `build` method more generic in terms of folder paths - at the moment they are hardcoded.
+- ~~Remove previous test code - I think for the moment we just need what's in the `build` method.~~
+- ~~Make the `build` method more generic in terms of folder paths - at the moment they are hardcoded.~~
+- A lot of the `inject_files` are repeated at the moment (well, actually all of them are - see the example below). It's probably worth having some `global_inject_files` that are injected into all `pages`, could go at the root of the `pages` object.
+```
+...
+{
+    "page_file": {
+        "location": "../examples/personal-website/input/templates",
+        "name": "index.html"
+    },
+    "inject_files": [
+        { "header": "../examples/personal-website/input/content/header.html" },
+        { "footer": "../examples/personal-website/input/content/footer.html" },
+        { "nav": "../examples/personal-website/input/content/footer.html" }
+    ],
+    "inject_literals": [ { "title": "Hello" } ]
+},
+{
+    "page_file": {
+        "location": "../examples/personal-website/input/templates",
+        "name": "otherme.html"
+    },
+    "inject_files": [
+        { "header": "../examples/personal-website/input/content/header.html" },
+        { "footer": "../examples/personal-website/input/content/footer.html" },
+        { "nav": "../examples/personal-website/input/content/footer.html" }
+    ],
+    "inject_literals": [ { "title": "Other Me" } ]
+},
+...
+```

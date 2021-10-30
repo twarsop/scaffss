@@ -1,16 +1,41 @@
+from typing import List, Dict
 import os
 from shutil import copyfile
 from distutils.dir_util import copy_tree
 from jinja2 import Template
 import json
 
-def copy_folder():
-    example_personal_website_dir = "../examples/personal-website/"
-    example_personal_website_input_dir = f"{example_personal_website_dir}input/"
-    example_personal_website_output_dir = f"{example_personal_website_dir}output/"
+class PageFile():
+    def __init__(self, location: str, name: str):
+        self.location = location
+        self.name = name
 
-    for file in os.listdir(example_personal_website_input_dir):
-        copyfile(f"{example_personal_website_input_dir}/{file}", f"{example_personal_website_output_dir}/{file}")
+    @classmethod
+    def from_json(cls, data):
+        return cls(**data)
+
+    def fullpath(self):
+        return os.path.join(self.location, self.name)
+
+class Page():
+    def __init__(self, page_file: PageFile, inject_files: List[Dict[str, str]], inject_literals: List[Dict[str, str]]):
+        self.page_file = page_file
+        self.inject_files = inject_files
+        self.inject_literals = inject_literals
+
+    @classmethod
+    def from_json(cls, data):
+        return cls(PageFile.from_json(data["page_file"]), data["inject_files"], data["inject_literals"])
+
+class Scaffss():
+    def __init__(self, output_folder: str, static_folder: str, pages: List[Page]):
+        self.output_folder = output_folder
+        self.static_folder = static_folder
+        self.pages = pages
+
+    @classmethod
+    def from_json(cls, data):
+        return cls(data["output_folder"], data["static_folder"], list(map(Page.from_json, data["pages"])))
 
 def read_file(file_name):
     file_contents = None
@@ -18,50 +43,36 @@ def read_file(file_name):
         file_contents = file.read().strip()
     return file_contents
 
-def jinja2_example():
-    jinja2_example_from_file_dir = "../examples/jinja2-example-from-file/"
-    jinja2_example_from_file_input_dir = f"{jinja2_example_from_file_dir}input/"
-    jinja2_example_from_file_output_dir = f"{jinja2_example_from_file_dir}output/"
+def build(scaffss_file_location):
+    data_str = None
+    with open(scaffss_file_location) as json_file:
+        data_str = json_file.read()
 
-    template = read_file(f"{jinja2_example_from_file_input_dir}template.txt")
-    content = read_file(f"{jinja2_example_from_file_input_dir}content.txt")
+    scaffss = Scaffss.from_json(json.loads(data_str))
 
-    with open(f"{jinja2_example_from_file_output_dir}output.txt", "w") as output_file:
-        output_file.write(Template(template).render(something=content));
+    copy_tree(scaffss.static_folder, scaffss.output_folder)    
 
-def build():
-    example_personal_website_dir = "../examples/personal-website/"
-    content_dir = f"{example_personal_website_dir}input/content/"
-    static_dir = f"{example_personal_website_dir}input/static/"
-    templates_dir = f"{example_personal_website_dir}input/templates/"
-    output_dir = f"{example_personal_website_dir}output/"
+    for page in scaffss.pages:
+        page_contents = read_file(page.page_file.fullpath())
+        
+        page_inject_contents = dict()
 
-    data = dict()
-    with open(f'{example_personal_website_dir}/input/data.json') as json_file:
-        data = json.load(json_file)
+        for inject_file in page.inject_files:
+            for key, value in inject_file.items():
+                page_inject_contents[key] = read_file(value)
 
-    content = dict()
-    for file in os.listdir(content_dir):
-        content[file.split('.')[0]] = read_file(f'{content_dir}/{file}')
+        for inject_literal in page.inject_literals:
+            for key, value in inject_literal.items():
+                page_inject_contents[key] = value
 
-    copy_tree(static_dir, output_dir)
-
-    for file in os.listdir(templates_dir):
-        template = read_file(f'{templates_dir}/{file}')
-
-        file_content = dict()
-
-        if file in data.keys():
-            for key_value in data[file]:
-                for key, value in key_value.items():
-                    file_content[key] = value
+        with open(os.path.join(scaffss.output_folder, page.page_file.name), 'w') as output_file:
+            previously_rendered_template = None
+            rendered_template = Template(page_contents).render(**page_inject_contents)
             
-        for key, value in content.items():
-            file_content[key] = value
+            while previously_rendered_template != rendered_template:
+                previously_rendered_template = rendered_template
+                rendered_template = Template(rendered_template).render(**page_inject_contents)
 
-        with open(f'{output_dir}{file}', 'w') as output_file:
-            output_file.write(Template(template).render(**file_content))
+            output_file.write(rendered_template)
 
-# copy_folder()
-# jinja2_example()
-build()
+build('../examples/personal-website/input/scaffss.json')
