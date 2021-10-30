@@ -41,7 +41,7 @@ def read_file(file_name):
         file_contents = file.read().strip()
     return file_contents
 
-def build():
+def build(scaffss_file_location):
     example_personal_website_dir = "../examples/personal-website/"
     content_dir = f"{example_personal_website_dir}input/content/"
     static_dir = f"{example_personal_website_dir}input/static/"
@@ -51,7 +51,7 @@ def build():
     copy_tree(static_dir, output_dir)
 
     data_str = None
-    with open(f'{example_personal_website_dir}/input/scaffss.json') as json_file:
+    with open(scaffss_file_location) as json_file:
         data_str = json_file.read()
 
     scaffss = Scaffss.from_json(json.loads(data_str))
@@ -72,4 +72,4 @@ def build():
         with open(os.path.join(f'{output_dir}{page.page_file.name}'), 'w') as output_file:
             output_file.write(Template(page_contents).render(**page_inject_contents))
 
-build()
+build('../examples/personal-website/input/scaffss.json')
