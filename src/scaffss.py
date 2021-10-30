@@ -41,17 +41,6 @@ def read_file(file_name):
         file_contents = file.read().strip()
     return file_contents
 
-def jinja2_example():
-    jinja2_example_from_file_dir = "../examples/jinja2-example-from-file/"
-    jinja2_example_from_file_input_dir = f"{jinja2_example_from_file_dir}input/"
-    jinja2_example_from_file_output_dir = f"{jinja2_example_from_file_dir}output/"
-
-    template = read_file(f"{jinja2_example_from_file_input_dir}template.txt")
-    content = read_file(f"{jinja2_example_from_file_input_dir}content.txt")
-
-    with open(f"{jinja2_example_from_file_output_dir}output.txt", "w") as output_file:
-        output_file.write(Template(template).render(something=content));
-
 def build():
     example_personal_website_dir = "../examples/personal-website/"
     content_dir = f"{example_personal_website_dir}input/content/"
@@ -83,5 +72,4 @@ def build():
         with open(os.path.join(f'{output_dir}{page.page_file.name}'), 'w') as output_file:
             output_file.write(Template(page_contents).render(**page_inject_contents))
 
-# jinja2_example()
 build()
