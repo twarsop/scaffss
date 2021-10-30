@@ -8,8 +8,9 @@
 				"name": "index.html"
 			},
 			"inject_files": [
-				{ "header": "../examples/personal-website/input/content/header.html" },
 				{ "footer": "../examples/personal-website/input/content/footer.html" },
+				{ "header": "../examples/personal-website/input/content/header.html" },
+				{ "head": "../examples/personal-website/input/content/head.html" },
 				{ "nav": "../examples/personal-website/input/content/nav.html" }
 			],
 			"inject_literals": [ 
@@ -25,8 +26,9 @@
 				"name": "otherme.html"
 			},
 			"inject_files": [
-				{ "header": "../examples/personal-website/input/content/header.html" },
 				{ "footer": "../examples/personal-website/input/content/footer.html" },
+				{ "header": "../examples/personal-website/input/content/header.html" },
+				{ "head": "../examples/personal-website/input/content/head.html" },
 				{ "nav": "../examples/personal-website/input/content/nav.html" }
 			],
 			"inject_literals": [ 
@@ -42,8 +44,9 @@
 				"name": "previous-versions.html"
 			},
 			"inject_files": [
-				{ "header": "../examples/personal-website/input/content/header.html" },
 				{ "footer": "../examples/personal-website/input/content/footer.html" },
+				{ "header": "../examples/personal-website/input/content/header.html" },
+				{ "head": "../examples/personal-website/input/content/head.html" },
 				{ "nav": "../examples/personal-website/input/content/nav.html" }
 			],
 			"inject_literals": [ 
@@ -59,8 +62,9 @@
 				"name": "projects.html"
 			},
 			"inject_files": [
-				{ "header": "../examples/personal-website/input/content/header.html" },
 				{ "footer": "../examples/personal-website/input/content/footer.html" },
+				{ "header": "../examples/personal-website/input/content/header.html" },
+				{ "head": "../examples/personal-website/input/content/head.html" },
 				{ "nav": "../examples/personal-website/input/content/nav.html" }
 			],
 			"inject_literals": [ 
@@ -76,8 +80,9 @@
 				"name": "versioning.html"
 			},
 			"inject_files": [
-				{ "header": "../examples/personal-website/input/content/header.html" },
 				{ "footer": "../examples/personal-website/input/content/footer.html" },
+				{ "header": "../examples/personal-website/input/content/header.html" },
+				{ "head": "../examples/personal-website/input/content/head.html" },
 				{ "nav": "../examples/personal-website/input/content/nav.html" }
 			],
 			"inject_literals": [ 
