@@ -18,7 +18,8 @@
 				{ "nav_hello_class": "selected" },
 				{ "nav_otherme_class": "" },
 				{ "nav_projects_class": "" }
-			]
+			],
+			"inject_many": []
 		},
 		{
 			"page_file": {
@@ -39,17 +40,17 @@
 			],
 			"inject_many": [
 				{
-					"tag": "otherme-entry",
+					"tag": "otherme_entry",
 					"page_file": {
-						"location": "../examples/personal-website/input/templates",
+						"location": "../examples/personal-website/input/content",
 						"name": "otherme-entry.html"
 					},
 					"inject_literal_sets": [
-						[ { "link": "http://codebuildrepeat.blogspot.com/" }, { "img": "Blogger_logo.png" } ],
-						[ { "link": "https://github.com/twarsop" }, { "img": "github_logo.png" } ],
-						[ { "link": "https://stackoverflow.com/users/3005674/t-warsop?tab=profile" }, { "img": "stackoverflow_logo.png" } ],
-						[ { "link": "https://twitter.com/t_warsop" }, { "img": "twitter_logo.png" } ],
-						[ { "link": "https://www.youtube.com/channel/UCa2LLdLZ4wIJTKrRO-XH66Q" }, { "img": "youtube_logo.png" } ]
+						{ "link": "http://codebuildrepeat.blogspot.com/", "img": "Blogger_logo.png" },
+						{ "link": "https://github.com/twarsop", "img": "github_logo.png" },
+						{ "link": "https://stackoverflow.com/users/3005674/t-warsop?tab=profile", "img": "stackoverflow_logo.png" },
+						{ "link": "https://twitter.com/t_warsop", "img": "twitter_logo.png" },
+						{ "link": "https://www.youtube.com/channel/UCa2LLdLZ4wIJTKrRO-XH66Q", "img": "youtube_logo.png" }
 					]
 				}
 			]
@@ -70,7 +71,8 @@
 				{ "nav_hello_class": "" },
 				{ "nav_otherme_class": "" },
 				{ "nav_projects_class": "" } 
-			]
+			],
+			"inject_many": []
 		},
 		{
 			"page_file": {
@@ -88,7 +90,8 @@
 				{ "nav_hello_class": "" },
 				{ "nav_otherme_class": "" },
 				{ "nav_projects_class": "selected" }
-			]
+			],
+			"inject_many": []
 		},
 		{
 			"page_file": {
@@ -106,7 +109,8 @@
 				{ "nav_hello_class": "" },
 				{ "nav_otherme_class": "" },
 				{ "nav_projects_class": "" }
-			]
+			],
+			"inject_many": []
 		}
 	]	
 }
