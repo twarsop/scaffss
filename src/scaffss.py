@@ -84,7 +84,6 @@ def build(scaffss_file_location):
 
             im_contents = ''
             for ils in im.inject_literal_sets:
-                print(ils)
                 im_contents += Template(im_page).render(**ils)
 
             page_inject_contents[im.tag] = im_contents
