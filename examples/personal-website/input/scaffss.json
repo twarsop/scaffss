@@ -18,7 +18,8 @@
 				{ "nav_hello_class": "selected" },
 				{ "nav_otherme_class": "" },
 				{ "nav_projects_class": "" }
-			]
+			],
+			"inject_many": []
 		},
 		{
 			"page_file": {
@@ -36,6 +37,22 @@
 				{ "nav_hello_class": "" },
 				{ "nav_otherme_class": "selected" },
 				{ "nav_projects_class": "" }
+			],
+			"inject_many": [
+				{
+					"tag": "otherme_entries",
+					"page_file": {
+						"location": "../examples/personal-website/input/content",
+						"name": "otherme-entry.html"
+					},
+					"inject_literal_sets": [
+						{ "link": "http://codebuildrepeat.blogspot.com/", "img": "Blogger_logo.png" },
+						{ "link": "https://github.com/twarsop", "img": "github_logo.png" },
+						{ "link": "https://stackoverflow.com/users/3005674/t-warsop?tab=profile", "img": "stackoverflow_logo.png" },
+						{ "link": "https://twitter.com/t_warsop", "img": "twitter_logo.png" },
+						{ "link": "https://www.youtube.com/channel/UCa2LLdLZ4wIJTKrRO-XH66Q", "img": "youtube_logo.png" }
+					]
+				}
 			]
 		},
 		{
@@ -54,6 +71,26 @@
 				{ "nav_hello_class": "" },
 				{ "nav_otherme_class": "" },
 				{ "nav_projects_class": "" } 
+			],
+			"inject_many": [
+				{
+					"tag": "previous_versions_entries",
+					"page_file": {
+						"location": "../examples/personal-website/input/content",
+						"name": "previous-versions-entry.html"
+					},
+					"inject_literal_sets": [
+						{ 
+							"name": "v1.1.0 (Current Version)", 
+							"date": "2021/09/28", 
+							"description": "Added new content to the site:<ul><li>Page explaining how the versioning works.</li><li>This website included in the Projects page (as a project that I've done/am working on), along with a link to the Previous Versions page.</li><li>The Previous Versions page which lists all the previous versions (and current version) of this website. Providing details of: version deployment date, what was included in the version and a link that takes you to that specfic version of the website.</li></ul>", 
+							"link": "v1.0.0" 
+						},
+						{ "name": "v1.0.2", "date": "2021/08/24", "description": "ixed a bug: The mobile layout/styling was not being used on mobile devices, the website was defaulting to the desktop styling on mobile devices instead. Fixed by including <b>viewport, width=device-width, initial-scale=1</b> in the <b>head</b> of every page.", "link": "v1.0.2" },
+						{ "name": "v1.0.1", "date": "2021/08/23", "description": "Fixed a bug: The file name for the github logo on the Other Me page was incorrect (differing by case, i.e. a case sensitivity issue).", "link": "v1.0.1" },
+						{ "name": "v1.0.0", "date": "2021/08/23", "description": "The initial release of the website.", "link": "v1.0.0" }
+					]
+				}
 			]
 		},
 		{
@@ -72,6 +109,38 @@
 				{ "nav_hello_class": "" },
 				{ "nav_otherme_class": "" },
 				{ "nav_projects_class": "selected" }
+			],
+			"inject_many": [
+				{
+					"tag": "projects_entries",
+					"page_file": {
+						"location": "../examples/personal-website/input/content",
+						"name": "projects-entry.html"
+					},
+					"inject_literal_sets": [
+						{ 
+							"title": "Raffles Barbers Website", 
+							"status": "Completed and Deployed", 
+							"amount_complete": "100", 
+							"description": "<p><a href=\"http://rafflesbarbers.co.uk/\" target=\"_blank\">http://rafflesbarbers.co.uk/</a></p><p>Created a simple desktop and mobile friendly website for a local barbers. Providing information about services offered.</p>",
+							"img": "projects-raffles-barbers.png" 
+						},
+						{ 
+							"title": "Football Calendar", 
+							"status": "In Planning", 
+							"amount_complete": "5", 
+							"description": "<p>Building a web app calendar that shows the results of previous football matches and scheduled future matches. For different leagues, all in one place.</p>",
+							"img": "calendar.png" 
+						},
+						{ 
+							"title": "tomwarsop.com", 
+							"status": "Deployed, Ongoing Work", 
+							"amount_complete": "80", 
+							"description": "<p>This website! Built my own portfolio/about me website. All hosted in AWS. Got an initial version deployed, will update/add more content later.</p><p>See previous versions of this site <a href=\"previous-versions.html\">here</a></p>",
+							"img": "projects-this-website.png" 
+						}
+					]
+				}
 			]
 		},
 		{
@@ -90,7 +159,8 @@
 				{ "nav_hello_class": "" },
 				{ "nav_otherme_class": "" },
 				{ "nav_projects_class": "" }
-			]
+			],
+			"inject_many": []
 		}
 	]	
 }
