@@ -28,47 +28,10 @@ There are a couple of requirements about how the project is approached too:
 
 ## To Do
 
-For others that want to get involved (and as a reference for myself), here is a list of things that currently need doing:
-- ~~Create a very simple python script that copies the contents of one folder and outputs it to another folder (this is a fundamental action this project is going to do and is the smallest first building block I can think of). For example files to copy from source to target directories might as well use the current version of [my personal site](https://github.com/twarsop/personal-website).~~
-- ~~Create a simple inline templating example using jinja2 - to start to learn how it works.~~
-- ~~Update the simple inline templating example to use input files for both the template and the content.~~
-- ~~Using the knowledge acquired above, get a templating solution that refactors the footer from my personal site into a single file which is then injected into all of the site pages.~~
-- ~~Similarly, refactor the header from the personal site into a single file which is then injected into all of the site pages.~~
-- ~~The build method currently has the content injected into the templates hardcoded, this needs to be changed so that it doesn't have to be updated everytime the templates/content changes. Example of hardcoded content:~~
-```
-output_file.write(Template(template).render(footer=content['footer'], header=content['header']))
-```
-- ~~Currently scaffss assumes a single flat directory for the `static` folder, this may of course not be true. So `build` needs to be updated to recursively copy the `static` files. (Note: this also means that currently the example personal website isn't actually complete because the previous versions directory has not been included).~~
-- ~~Need a way to inject different content into different files, but in the same template placeholder/key. For example, the title of page. My thoughts on this are storing this data in json like: `{ page: [ { key: value, ... } ] }`~~
-- The injection of content should be recursive: there are some parts of the website that need to be refactored as templates themselves so they can have content injected into themselves, as well as needing to be injected into antoher template. For example, the nav could be refactored as content to be injected into the templates. However, the nav itself needs content injecting into it, namely the a `selected`/`non-selected` class so that the correct nav item is selected for the page. I see this wokring by starting at the top level (so the page) and then working down the tree of injection. So it would go page -> nav -> selected nav item.
-- ~~Remove previous test code - I think for the moment we just need what's in the `build` method.~~
-- ~~Make the `build` method more generic in terms of folder paths - at the moment they are hardcoded.~~
-- A lot of the `inject_files` are repeated at the moment (well, actually all of them are - see the example below). It's probably worth having some `global_inject_files` that are injected into all `pages`, could go at the root of the `pages` object.
-```
-...
-{
-    "page_file": {
-        "location": "../examples/personal-website/input/templates",
-        "name": "index.html"
-    },
-    "inject_files": [
-        { "header": "../examples/personal-website/input/content/header.html" },
-        { "footer": "../examples/personal-website/input/content/footer.html" },
-        { "nav": "../examples/personal-website/input/content/footer.html" }
-    ],
-    "inject_literals": [ { "title": "Hello" } ]
-},
-{
-    "page_file": {
-        "location": "../examples/personal-website/input/templates",
-        "name": "otherme.html"
-    },
-    "inject_files": [
-        { "header": "../examples/personal-website/input/content/header.html" },
-        { "footer": "../examples/personal-website/input/content/footer.html" },
-        { "nav": "../examples/personal-website/input/content/footer.html" }
-    ],
-    "inject_literals": [ { "title": "Other Me" } ]
-},
-...
+For others that want to get involved (and as a reference for myself), here is a list of things that could be done in the future:
+- Unit testing, specifcally around parsing the `scaffss.json` file
+- Probably could remove Jinja2, we aren't really using any of it's more powerful functions (just the replace `{{ x }}` with a string), which we could probably do ourselves.
+- Remove the personal website example - my personal website should actually be re-written to use this framework.
+- Make `scaffss` a system wide command. So, for example, in any folder we can type the word `scaffss` and it will look for a `scaffss.json` file to parse and then build according to the instructions found it that file.
+- Add a file watcher so hot reloads can be done during development - we can leave scaffss running on a folder and as changes are made it rebuilds.
 ```
