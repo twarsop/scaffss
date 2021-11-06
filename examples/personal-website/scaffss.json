@@ -1,17 +1,17 @@
 {
-	"output_folder": "../examples/personal-website/output",
-	"static_folder": "../examples/personal-website/input/static",
+	"output_folder": "output",
+	"static_folder": "input/static",
 	"pages": [
 		{
 			"page_file": {
-				"location": "../examples/personal-website/input/templates",
+				"location": "input/templates",
 				"name": "index.html"
 			},
 			"inject_files": [
-				{ "footer": "../examples/personal-website/input/content/footer.html" },
-				{ "header": "../examples/personal-website/input/content/header.html" },
-				{ "head": "../examples/personal-website/input/content/head.html" },
-				{ "nav": "../examples/personal-website/input/content/nav.html" }
+				{ "footer": "input/content/footer.html" },
+				{ "header": "input/content/header.html" },
+				{ "head": "input/content/head.html" },
+				{ "nav": "input/content/nav.html" }
 			],
 			"inject_literals": [ 
 				{ "title": "Hello" },
@@ -23,14 +23,14 @@
 		},
 		{
 			"page_file": {
-				"location": "../examples/personal-website/input/templates",
+				"location": "input/templates",
 				"name": "otherme.html"
 			},
 			"inject_files": [
-				{ "footer": "../examples/personal-website/input/content/footer.html" },
-				{ "header": "../examples/personal-website/input/content/header.html" },
-				{ "head": "../examples/personal-website/input/content/head.html" },
-				{ "nav": "../examples/personal-website/input/content/nav.html" }
+				{ "footer": "input/content/footer.html" },
+				{ "header": "input/content/header.html" },
+				{ "head": "input/content/head.html" },
+				{ "nav": "input/content/nav.html" }
 			],
 			"inject_literals": [ 
 				{ "title": "Other Me" },
@@ -42,7 +42,7 @@
 				{
 					"tag": "otherme_entries",
 					"page_file": {
-						"location": "../examples/personal-website/input/content",
+						"location": "input/content",
 						"name": "otherme-entry.html"
 					},
 					"inject_literal_sets": [
@@ -57,14 +57,14 @@
 		},
 		{
 			"page_file": {
-				"location": "../examples/personal-website/input/templates",
+				"location": "input/templates",
 				"name": "previous-versions.html"
 			},
 			"inject_files": [
-				{ "footer": "../examples/personal-website/input/content/footer.html" },
-				{ "header": "../examples/personal-website/input/content/header.html" },
-				{ "head": "../examples/personal-website/input/content/head.html" },
-				{ "nav": "../examples/personal-website/input/content/nav.html" }
+				{ "footer": "input/content/footer.html" },
+				{ "header": "input/content/header.html" },
+				{ "head": "input/content/head.html" },
+				{ "nav": "input/content/nav.html" }
 			],
 			"inject_literals": [ 
 				{ "title": "Previous Versions" },
@@ -76,7 +76,7 @@
 				{
 					"tag": "previous_versions_entries",
 					"page_file": {
-						"location": "../examples/personal-website/input/content",
+						"location": "input/content",
 						"name": "previous-versions-entry.html"
 					},
 					"inject_literal_sets": [
@@ -84,7 +84,7 @@
 							"name": "v1.1.0 (Current Version)", 
 							"date": "2021/09/28", 
 							"description": "Added new content to the site:<ul><li>Page explaining how the versioning works.</li><li>This website included in the Projects page (as a project that I've done/am working on), along with a link to the Previous Versions page.</li><li>The Previous Versions page which lists all the previous versions (and current version) of this website. Providing details of: version deployment date, what was included in the version and a link that takes you to that specfic version of the website.</li></ul>", 
-							"link": "v1.0.0" 
+							"link": "v1.1.0" 
 						},
 						{ "name": "v1.0.2", "date": "2021/08/24", "description": "ixed a bug: The mobile layout/styling was not being used on mobile devices, the website was defaulting to the desktop styling on mobile devices instead. Fixed by including <b>viewport, width=device-width, initial-scale=1</b> in the <b>head</b> of every page.", "link": "v1.0.2" },
 						{ "name": "v1.0.1", "date": "2021/08/23", "description": "Fixed a bug: The file name for the github logo on the Other Me page was incorrect (differing by case, i.e. a case sensitivity issue).", "link": "v1.0.1" },
@@ -95,14 +95,14 @@
 		},
 		{
 			"page_file": {
-				"location": "../examples/personal-website/input/templates",
+				"location": "input/templates",
 				"name": "projects.html"
 			},
 			"inject_files": [
-				{ "footer": "../examples/personal-website/input/content/footer.html" },
-				{ "header": "../examples/personal-website/input/content/header.html" },
-				{ "head": "../examples/personal-website/input/content/head.html" },
-				{ "nav": "../examples/personal-website/input/content/nav.html" }
+				{ "footer": "input/content/footer.html" },
+				{ "header": "input/content/header.html" },
+				{ "head": "input/content/head.html" },
+				{ "nav": "input/content/nav.html" }
 			],
 			"inject_literals": [ 
 				{ "title": "Projects" },
@@ -114,7 +114,7 @@
 				{
 					"tag": "projects_entries",
 					"page_file": {
-						"location": "../examples/personal-website/input/content",
+						"location": "input/content",
 						"name": "projects-entry.html"
 					},
 					"inject_literal_sets": [
@@ -145,14 +145,14 @@
 		},
 		{
 			"page_file": {
-				"location": "../examples/personal-website/input/templates",
+				"location": "input/templates",
 				"name": "versioning.html"
 			},
 			"inject_files": [
-				{ "footer": "../examples/personal-website/input/content/footer.html" },
-				{ "header": "../examples/personal-website/input/content/header.html" },
-				{ "head": "../examples/personal-website/input/content/head.html" },
-				{ "nav": "../examples/personal-website/input/content/nav.html" }
+				{ "footer": "input/content/footer.html" },
+				{ "header": "input/content/header.html" },
+				{ "head": "input/content/head.html" },
+				{ "nav": "input/content/nav.html" }
 			],
 			"inject_literals": [ 
 				{ "title": "Versioning" },
