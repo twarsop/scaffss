@@ -1,0 +1,27 @@
+<div class="col-md-6 project">
+    <div class="row project-row">
+        <div class="col-xl-8">
+            <div class="description">
+                <div class="title">{{ title }}</div>
+                <div class="status-label">Status: {{ status }}</div>
+                <div class="row progress-bar-row">
+                    <div class="col-10">
+                        <progress class="progress-bar" max="100" value="{{ amount_complete }}" data-label="{{ amount_complete }}%"></progress>
+                    </div>
+                    <div class="col-2">
+                        <div class="progress-bar-value-container">
+                            {{ amount_complete }}%
+                        </div>
+                    </div>
+                    <div class="clear-both"></div>
+                </div>
+                <div class="description-container">
+                    {{ description }}
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4">
+            <img src="{{ img }}" width="100%">
+        </div>
+    </div>
+</div>

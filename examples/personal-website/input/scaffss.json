@@ -110,7 +110,38 @@
 				{ "nav_otherme_class": "" },
 				{ "nav_projects_class": "selected" }
 			],
-			"inject_many": []
+			"inject_many": [
+				{
+					"tag": "projects_entries",
+					"page_file": {
+						"location": "../examples/personal-website/input/content",
+						"name": "projects-entry.html"
+					},
+					"inject_literal_sets": [
+						{ 
+							"title": "Raffles Barbers Website", 
+							"status": "Completed and Deployed", 
+							"amount_complete": "100", 
+							"description": "<p><a href=\"http://rafflesbarbers.co.uk/\" target=\"_blank\">http://rafflesbarbers.co.uk/</a></p><p>Created a simple desktop and mobile friendly website for a local barbers. Providing information about services offered.</p>",
+							"img": "projects-raffles-barbers.png" 
+						},
+						{ 
+							"title": "Football Calendar", 
+							"status": "In Planning", 
+							"amount_complete": "5", 
+							"description": "<p>Building a web app calendar that shows the results of previous football matches and scheduled future matches. For different leagues, all in one place.</p>",
+							"img": "calendar.png" 
+						},
+						{ 
+							"title": "tomwarsop.com", 
+							"status": "Deployed, Ongoing Work", 
+							"amount_complete": "80", 
+							"description": "<p>This website! Built my own portfolio/about me website. All hosted in AWS. Got an initial version deployed, will update/add more content later.</p><p>See previous versions of this site <a href=\"previous-versions.html\">here</a></p>",
+							"img": "projects-this-website.png" 
+						}
+					]
+				}
+			]
 		},
 		{
 			"page_file": {
