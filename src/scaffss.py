@@ -4,6 +4,7 @@ from shutil import copyfile
 from distutils.dir_util import copy_tree
 from jinja2 import Template
 import json
+from argparse import ArgumentParser
 
 class PageFile():
     def __init__(self, location: str, name: str):
@@ -98,4 +99,8 @@ def build(scaffss_file_location):
 
             output_file.write(rendered_template)
 
-build('../examples/personal-website/input/scaffss.json')
+parser = ArgumentParser()
+parser.add_argument("-sf", "--scaffss-file", dest="scaffss_file", help="The location of the scaffss file to process")
+args = parser.parse_args()
+
+build(args.scaffss_file)
