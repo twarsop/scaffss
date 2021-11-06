@@ -7,16 +7,13 @@ import json
 from argparse import ArgumentParser
 
 class PageFile():
-    def __init__(self, location: str, name: str):
-        self.location = location
+    def __init__(self, root_dir: str, location: str, name: str):
+        self.location = os.path.join(root_dir, location, name)
         self.name = name
 
     @classmethod
-    def from_json(cls, data):
-        return cls(**data)
-
-    def fullpath(self):
-        return os.path.join(self.location, self.name)
+    def from_json(cls, root_dir, data):
+        return cls(root_dir, data['location'], data['name'])
 
 class InjectMany():
     def __init__(self, tag: str, page_file: PageFile, inject_literal_sets: List[Dict[str, str]]):
@@ -25,8 +22,8 @@ class InjectMany():
         self.inject_literal_sets = inject_literal_sets
 
     @classmethod
-    def from_json(cls, data):
-        return cls(data['tag'], PageFile.from_json(data['page_file']), data['inject_literal_sets'])
+    def from_json(cls, root_dir, data):
+        return cls(data['tag'], PageFile.from_json(root_dir, data['page_file']), data['inject_literal_sets'])
 
 class Page():
     def __init__(self, page_file: PageFile, inject_files: List[Dict[str, str]], inject_literals: List[Dict[str, str]], inject_many: List[InjectMany]):
@@ -39,18 +36,21 @@ class Page():
     def from_json(cls, data):
         inject_many = []
         for im in data['inject_many']:
-            inject_many.append(InjectMany.from_json(im))
-        return cls(PageFile.from_json(data["page_file"]), data["inject_files"], data["inject_literals"], inject_many)
+            inject_many.append(InjectMany.from_json(data['root_dir'], im))
+        return cls(PageFile.from_json(data['root_dir'], data["page_file"]), data["inject_files"], data["inject_literals"], inject_many)
 
 class Scaffss():
-    def __init__(self, output_folder: str, static_folder: str, pages: List[Page]):
-        self.output_folder = output_folder
-        self.static_folder = static_folder
+    def __init__(self, root_dir: str, output_folder: str, static_folder: str, pages: List[Page]):
+        self.root_dir = root_dir
+        self.output_folder = os.path.join(root_dir, output_folder)
+        self.static_folder = os.path.join(root_dir, static_folder)
         self.pages = pages
 
     @classmethod
-    def from_json(cls, data):
-        return cls(data["output_folder"], data["static_folder"], list(map(Page.from_json, data["pages"])))
+    def from_json(cls, root_dir, data):
+        for d in data['pages']:
+            d['root_dir'] = root_dir
+        return cls(root_dir, data["output_folder"], data["static_folder"], list(map(Page.from_json, data["pages"])))
 
 def read_file(file_name):
     file_contents = None
@@ -63,25 +63,25 @@ def build(scaffss_file_location):
     with open(scaffss_file_location) as json_file:
         data_str = json_file.read()
 
-    scaffss = Scaffss.from_json(json.loads(data_str))
+    scaffss = Scaffss.from_json(os.path.dirname(scaffss_file_location), json.loads(data_str))
 
     copy_tree(scaffss.static_folder, scaffss.output_folder)    
 
     for page in scaffss.pages:
-        page_contents = read_file(page.page_file.fullpath())
+        page_contents = read_file(page.page_file.location)
         
         page_inject_contents = dict()
 
         for inject_file in page.inject_files:
             for key, value in inject_file.items():
-                page_inject_contents[key] = read_file(value)
+                page_inject_contents[key] = read_file(os.path.join(scaffss.root_dir, value))
 
         for inject_literal in page.inject_literals:
             for key, value in inject_literal.items():
                 page_inject_contents[key] = value
 
         for im in page.inject_many:
-            im_page = read_file(im.page_file.fullpath())
+            im_page = read_file(im.page_file.location)
 
             im_contents = ''
             for ils in im.inject_literal_sets:
