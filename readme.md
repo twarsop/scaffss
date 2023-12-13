@@ -28,7 +28,7 @@ To inject a component into a scaffold page include the component's filename surr
 
 ## Example
 
-Scaffold file:
+Scaffold file (`input-folder/scaffold/`):
 
 ```
 index.html
@@ -42,7 +42,7 @@ index.html
 </html>
 ```
 
-Component file:
+Component file (`input-folder/components/`):
 
 ```
 component.html
@@ -50,7 +50,7 @@ component.html
 <div>This is a component</div>
 ```
 
-Result of executing scaffss on the scaffold and components:
+Result of executing scaffss on the scaffold and components (`output-folder`):
 
 ```
 index.html
