@@ -26,6 +26,21 @@ To keep the current script small some conventions are used. It is expected that 
 
 To inject a component into a scaffold page include the component's filename surrounded by 3 pairs of braces, e.g. `{{{ component_file.html }}}`.
 
+## Variables
+
+Values that are used in more than one place can be kept in an optional `config.json` file in the input folder (next to `scaffold/` and `components/`). It must contain a single JSON object:
+
+```
+config.json
+
+{
+    "version": "1.2.0",
+    "updated": "2026/11/14"
+}
+```
+
+To inject a value include its name surrounded by 2 pairs of braces, e.g. `{{ version }}`. Unlike components, variables can appear anywhere in a line, any number of times, in both scaffold pages and components (only `.html` and `.css` files are processed). If a page uses a variable that isn't in `config.json` the build stops with an error naming the file and the variable.
+
 ## Example
 
 Scaffold file (`input-folder/scaffold/`):
