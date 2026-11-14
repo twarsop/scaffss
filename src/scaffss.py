@@ -1,7 +1,10 @@
 from argparse import ArgumentParser
+import json
 import os
+import re
 import shutil
 import pathlib
+import sys
 
 parser = ArgumentParser()
 parser.add_argument("-i", "--input-folder", dest="input_folder", help="The location of the input folder scaffss will use to build the site.")
@@ -10,6 +13,25 @@ args = parser.parse_args()
 
 scaffold_folder = os.path.join(args.input_folder, "scaffold", "")
 components_folder = os.path.join(args.input_folder, "components", "")
+config_file = os.path.join(args.input_folder, "config.json")
+
+config = {}
+if os.path.isfile(config_file):
+    with open(config_file, "r") as config_file_handle:
+        config = json.load(config_file_handle)
+    if not isinstance(config, dict):
+        sys.exit(f"{config_file} must contain a JSON object, e.g. {{\"version\": \"1.0.0\"}}")
+
+# {{ name }}, but not the {{{ component.html }}} include syntax
+variable_pattern = re.compile(r"(?<!\{)\{\{\s*([A-Za-z_][A-Za-z0-9_]*)\s*\}\}(?!\})")
+
+def inject_variables(line, source_file):
+    def replace(match):
+        name = match.group(1)
+        if name not in config:
+            sys.exit(f"Unknown variable '{name}' in {source_file}, add it to {config_file}")
+        return str(config[name])
+    return variable_pattern.sub(replace, line)
 
 for root, dirs, files in os.walk(args.output_folder):
     for name in files:
@@ -29,7 +51,7 @@ for subdir, dirs, files in os.walk(scaffold_folder):
         print(f'Constructing [{counter}] {input_file.replace(scaffold_folder, "")}')
 
         output_file = os.path.join(output_dir, file)
-        
+
         if (pathlib.Path(file).suffix in [".css", ".html"]):
             with open(output_file, "w") as output_file_handle:
                 with open(input_file, "r") as input_file_handle:
@@ -41,9 +63,9 @@ for subdir, dirs, files in os.walk(scaffold_folder):
                             with open(component_file, "r") as component_file_handle:
                                 for component_line in component_file_handle:
                                     component_line_indented = f'{" " * line.find("{")}{component_line}'
-                                    output_file_handle.write(component_line_indented)
+                                    output_file_handle.write(inject_variables(component_line_indented, component_file))
                         else:
-                            output_file_handle.write(line)
+                            output_file_handle.write(inject_variables(line, input_file))
         else:
             shutil.copyfile(input_file, output_file)
 
